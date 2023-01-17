@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import MovieLink from '../components/movieLink.js'
 function MovieList() {
 
     const [movieList, setMovie] = useState(
@@ -32,17 +32,6 @@ function MovieList() {
           ]
     )
 
-    const movieItems = movieList.map((movie) => {
-        return (
-            <li key={movie.id}>
-            <a href={movie.url}>
-            {movie.name}
-            </a>
-            <br/>
-            </li>
-        )
-    })
-
     const handleViewMoreClick = evt => {
         evt.preventDefault()
         window.location.href='https://www.imdb.com/calendar/?region=gb'
@@ -50,7 +39,7 @@ function MovieList() {
 
     return (
         <>
-        <li>{movieItems}</li>
+        <li><MovieLink movieLinks = {movieList}></MovieLink></li>
         <hr/>
         <button onClick={handleViewMoreClick}>View more upcoming releases >> </button>
         </>
